@@ -7,10 +7,10 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+	[Header("Player Movment Setting")]
 	[SerializeField] float moveSpeed = 5f;
 	[SerializeField] GameObject weaponPrefab;
 	[SerializeField] float offsetWeapon;
-	[SerializeField] ParticleSystem hitEffect;
 
 	[Header("Touch Settings")]
 	[SerializeField] bool isUseTouch;
@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
 
 	[HideInInspector]
 	public bool isAlive = true;
+	// Weapon static to get acces from TailWeapon
 	public static GameObject weaponTail;
 	public static Player instance;
 
@@ -61,9 +62,10 @@ public class Player : MonoBehaviour
 		FlipSprite();
 	}
 
+	// Shoot For Touch
 	public void Shoot()
 	{
-		if (isUseTouch)
+		if (isUseTouch && isAlive)
 		{
 			if (canShoot)
 			{
@@ -110,6 +112,7 @@ public class Player : MonoBehaviour
 			transform.GetChild(0).localScale = new Vector2(Mathf.Sign(rb.velocity.x), 1f);
 		}
 	}
+	// Input system for movement with Keyboard
 	private void OnMove(InputValue value)
 	{
 		if (!isAlive) return;
@@ -117,6 +120,7 @@ public class Player : MonoBehaviour
 
 		moveInput = value.Get<Vector2>();
 	}
+	// Input system for fire with Keybord
 	void OnFire(InputValue value)
 	{
 		if (!isAlive) return;
@@ -131,6 +135,7 @@ public class Player : MonoBehaviour
 			}
 		}
 	}
+	// Handle Fire rate
 	private IEnumerator ShootWeapon()
 	{
 		canWalk = false;
@@ -144,11 +149,12 @@ public class Player : MonoBehaviour
 		GameObject weapon = Instantiate(weaponPrefab, temp, Quaternion.identity);
 		weaponTail = weapon;
 
-		yield return new WaitForSeconds(0.2f);
+		yield return new WaitForSeconds(0.15f);
 		anim.SetBool(AnimationTags.IS_SHOOTING, false);
+		yield return new WaitForSeconds(0.5f);
 		canWalk = true;
 
-		yield return new WaitForSeconds(0.3f);
+		yield return new WaitForSeconds(0.6f);
 		canShoot = true;
 	}
 }

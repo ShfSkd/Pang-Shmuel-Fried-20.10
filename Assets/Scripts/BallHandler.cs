@@ -31,6 +31,7 @@ public class BallHandler : MonoBehaviour
 	{
 		MoveBall();
 	}
+	// Instantiate balls when hit by the weapon
 	void InstantiateBalls()
 	{
 		if (!gameObject.CompareTag(Tags.SMALL_BALL))
@@ -45,6 +46,7 @@ public class BallHandler : MonoBehaviour
 			ballHandler2 = ball2.GetComponent<BallHandler>();
 		}
 	}
+	// When ball hit change ball direction
 	void ChangeBallsWhenHit()
 	{
 		InstantiateBalls();
@@ -123,6 +125,8 @@ public class BallHandler : MonoBehaviour
 		if (other.gameObject.CompareTag(Tags.WEAPON))
 		{
 			levelManager.ballsCount--;
+			Destroy(Player.weaponTail);
+			Player.weaponTail = null;
 			if (!gameObject.CompareTag(Tags.SMALL_BALL))
 			{
 				ChangeBallsWhenHit();
@@ -137,6 +141,7 @@ public class BallHandler : MonoBehaviour
 			}
 		}
 	}
+	// For complete the level check the balls value 
 	public int GetBallsCount()
 	{
 		int scoreBalls = 0;

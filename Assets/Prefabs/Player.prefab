@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1764205575
-  m_SortingLayer: 4
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -3482009316953301451, guid: 6e3ec77ddfbc96e468f3d81b9c6bfc98,
     type: 3}
@@ -222,8 +222,6 @@ MonoBehaviour:
   weaponPrefab: {fileID: 3317248255573622637, guid: d5c05e0d1d6acf04da273cd112def69f,
     type: 3}
   offsetWeapon: 4
-  hitEffect: {fileID: 1535842254851450787, guid: 61a826d676958174bac04ded69cd2c61,
-    type: 3}
   isUseTouch: 1
   fireButton: {fileID: 0}
   joystick: {fileID: 0}

@@ -14,6 +14,7 @@ public class ArrowTail : MonoBehaviour
         {
             if (Player.weaponTail != null)
             {
+                transform.GetChild(i).position = new Vector2(Player.weaponTail.transform.position.x, transform.GetChild(i).position.y);
                 if (Player.weaponTail.transform.position.y > transform.GetChild(i).position.y)
                 {
                     transform.GetChild(i).gameObject.SetActive(true);
@@ -22,7 +23,6 @@ public class ArrowTail : MonoBehaviour
             else
             {
                 transform.GetChild(i).gameObject.SetActive(false);
-                transform.GetChild(i).position = new Vector2(Player.instance.transform.position.x, transform.GetChild(i).position.y);
             }
 
         }

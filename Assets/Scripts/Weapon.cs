@@ -15,6 +15,7 @@ public class Weapon : MonoBehaviour
 		weaponCollider = GetComponent<BoxCollider2D>();
 	}
 
+	// Moving the aroow up uniti colide with the top
 	private void FixedUpdate()
 	{
 		if (!weaponCollider.IsTouchingLayers(LayerMask.GetMask("Border")))
@@ -32,6 +33,7 @@ public class Weapon : MonoBehaviour
 		if (other.gameObject.GetComponent<BallHandler>())
 		{
 			Player.weaponTail = null;
+			Debug.Log(Player.weaponTail);
 			Destroy(gameObject);
 		}
 	}

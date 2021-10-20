@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+// I took this script from the internet I didnt succsed to implement that :(
 [ExecuteInEditMode]
 public class CameraAnchor : MonoBehaviour {
 	public enum AnchorType {

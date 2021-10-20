@@ -49,7 +49,7 @@ public class LevelManager : MonoBehaviour
 	public void LoadNextLevel()
 	{
 		int index = SceneManager.GetActiveScene().buildIndex;
-		if (!(SceneManager.sceneCount < index + 1))
+		if (index < SceneManager.sceneCountInBuildSettings - 2)
 		{
 
 			currentLevel++;
